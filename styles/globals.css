@@ -1,11 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Lato:wght@100;300;400;700&display=swap');
+@import '~antd/dist/antd.css';
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Lato,Helvetica Neue,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, sans-serif;
+  background-color: #000;
 }
+:root{
+  --Nav-mg-top: 10px;
+  --nav-height:30px;
+  --hero-margin-top: calc(var(--nav-height) + var(--Nav-mg-top));
+  
 
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -14,3 +23,244 @@ a {
 * {
   box-sizing: border-box;
 }
+#__next{
+  overflow-x: hidden;
+}
+
+/* Nav bar */
+
+.nav-wr{
+  width: 100%;
+  margin-top:var(--Nav-mg-top);
+  height:var(--nav-height);
+  z-index: 2;
+  color: #fff;
+  position: relative;
+}
+.nav-content{
+  width: 93%;
+  margin: 0 auto;
+  display: flex;
+}
+.nav-img{
+  margin-right: 20px;
+}
+.nav-logo{
+  width: 100px;
+}
+.nav-list{
+  display: flex;
+}
+.nav-list-item{
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+
+
+
+/* End Nav-bar */
+
+/*----------------------------------------------- Home PAGE -----------------------------------------------*/
+.Home-wr{
+  margin-top:calc(0px - var(--hero-margin-top));
+  margin-bottom:50px;
+}
+.hero-wr{
+  width: 100%;
+  background-size: cover;
+  height:450px;
+  display: flex;
+  justify-content: flex-start;
+  align-self: center;
+  padding-left: 3.5%;
+  z-index: 1;
+  position: relative;
+}
+.hero-wr::after {
+  height: 30px;
+  position: absolute;
+  content: '';
+  width: 110%;
+  bottom: 0;
+  left: -7%;
+  background-image: linear-gradient(360deg, black, transparent);
+}
+.hero-wr::before {
+  height: 42px;
+  position: absolute;
+  content: '';
+  width: 110%;
+  top: 0;
+  left: -7%;
+  background-image: linear-gradient(180deg, black, transparent);
+}
+.hero-ct{
+  display: flex;
+  justify-content: flex-start;
+  align-self: center;
+  flex-direction: column;
+  color: #fff;
+}
+.hero-movie-name {
+  font-size: 23px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.hero-btn{
+
+}
+.btn-hero-play {
+  background: red;
+  border: none;
+  width: 65px;
+  height: 23px;
+  margin-right: 10px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 10px;
+  cursor: pointer;
+
+}
+.btn-hero-info{
+  background: #59575763;
+  border: none;
+  width: 65px;
+  height: 23px;
+  margin-right: 10px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 10px;
+  cursor: pointer;
+
+}
+.hero-movie-des{
+  width: 300px;
+  font-size: 11px;
+  color: #ccc;
+  font-weight: 300;
+  line-height: 15px;
+
+}
+
+.list-wr{
+  padding-top:10px;
+  width: 100%;
+  padding-left: 3.5%;
+}
+
+.list-row{
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.list-row::-webkit-scrollbar{
+  -webkit-appearance: none;
+  height: 5px;
+  cursor: pointer;
+ 
+}
+.list-row::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+.list-row::-webkit-scrollbar-thumb {
+  background: #ffffff45;
+  border-radius: 10px;
+  cursor: pointer;
+
+}
+.list-title{
+  color: #fff;
+  margin:0;
+}
+.col-img-wr {
+  height: 234px;
+  border-radius: 3px;
+  margin-bottom: 7px;
+  /* transform: scale(1); */
+  transform-origin: 50% 50%;
+  transition: 0.3s all cubic-bezier(0.4, 0, 0.68, 0.77);
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+
+}
+
+.list-col{
+  position:unset;
+  transform-origin: 0% 50%;
+  overflow: hidden;
+  transition: 0.3s all cubic-bezier(0.4, 0, 0.68, 0.77);
+  opacity: 0.7;
+
+}
+
+.list-col:hover{
+  transform: scale(1.15);
+  position: relative;
+  z-index: 2;
+  margin-right: 30px;
+  opacity: 0.9;
+}
+.col-item-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.col-item-info{
+  position: absolute;
+  bottom: 30px;
+  color: #fff;
+  /* display: none; */
+  padding-left:10px;
+
+}
+.movie-name{
+  margin: 0;
+  font-weight: bold;
+  font-size: 10px;
+  transform: translateY(15px);
+  opacity: 0;
+  
+}
+.relase-date{
+  margin: 0;
+  font-size: 7px;
+  transform: translateY(15px);
+  opacity: 0;
+  font-weight:600;
+  color:rgba(253, 234, 122, 0.74);
+
+}
+.rated{
+  margin: 0;
+  font-weight:600;
+  font-size: 7px;
+  transform: translateY(15px);
+  opacity: 0;
+  color: rgb(0, 255, 115);
+
+}
+.list-col:hover .movie-name{
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s ease-in-out;
+  transition-delay: 0;
+}
+.list-col:hover .relase-date{
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s ease-in-out;
+  transition-delay: 0.15s;
+
+}.list-col:hover .rated{
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s ease-in-out;
+  transition-delay: 0.3s;
+
+}
+/* ----------------------------------------------End Home Page ----------------------------------------*/
