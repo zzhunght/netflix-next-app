@@ -1,21 +1,51 @@
+import { useContext, useState } from 'react'
 import Hero from "../components/Hero"
 import axios from "axios"
 import { popularMovies, top_ratedMovies, trending, tvShowPopular, tvShowTopRated } from "../utils/contant"
 import List from "../components/List"
+import { ModalContext } from '../context/Modal'
+import Modal from '../components/Modal'
 
 function HomePage ({hero,popular,top_rated,tvShowPopular,tvShowTopRated,trendingMovies}){
-   
+    const {showModal,setShowModal} = useContext(ModalContext)
+    const [modalData,setModalData] = useState({})
     
+    const  handelModal = (data) => {
+        setModalData(data)
+        setShowModal(true)
+    }
+
     return (
         <div className="Home-wr">
             <Hero data={hero} backdrop='/home-hero.jpg'/>
             <div className="lists-of-list-movies">
-                <List label="Trending Movies" data={trendingMovies}/>
-                <List label="Popular Movies" data={popular}/>
-                <List label="Top Rated Movies" data={top_rated}/>
-                <List label="Tv Shows Popular" data={tvShowPopular}/>
-                <List label="Tv Shows Top Rated" data={tvShowTopRated}/>
+                <List
+                 label="Trending Movies" 
+                 data={trendingMovies}
+                 setShowModal={setShowModal} handelModal={handelModal}
+                />
+                <List
+                 label="Popular Movies" 
+                 data={popular}
+                 setShowModal={setShowModal} handelModal={handelModal}
+                />
+                <List
+                 label="Top Rated Movies"
+                 data={top_rated}
+                 setShowModal={setShowModal} handelModal={handelModal}
+                />
+                <List
+                 label="Tv Shows Popular"
+                 data={tvShowPopular}
+                 setShowModal={setShowModal} handelModal={handelModal}
+                />
+                <List
+                 label="Tv Shows Top Rated" 
+                 data={tvShowTopRated}
+                 setShowModal={setShowModal} handelModal={handelModal}
+                />
             </div>
+            {showModal && <Modal data={modalData}/>}
         </div>
     )
 }

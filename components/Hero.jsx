@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 
 function Hero({data,backdrop}) {
+    console.log(data)
   return (
     <div
      className="hero-wr" 
@@ -9,14 +10,14 @@ function Hero({data,backdrop}) {
     >
         <div className="hero-ct">
             <div className="hero-movie-name">
-                {data.original_title}
+                {data?.original_title || data?.name || data?.title || data?.original_name}
             </div>
             <div className="hero-btn">
                 <button className="btn-hero-play">Play</button>
                 <button className="btn-hero-info">More Info</button>
             </div>
             <div className="hero-movie-des">
-                <p>{data.overview}</p>
+                <p>{data?.overview}</p>
             </div>
             
         </div>

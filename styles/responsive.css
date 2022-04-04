@@ -1,0 +1,35 @@
+@media (min-width: 1300px) {
+    .list-col{
+        height:320px;
+    }
+    .col-img-wr {
+        height:100%;
+    }
+    .list-col:hover{
+        transform: scale(1.1);
+        position: relative;
+        z-index: 2;
+        margin-right: 30px;
+        opacity: 0.9;
+    }
+    .movie-name{
+        font-size:13px;
+    }
+    .relase-date{
+        font-size: 10px;
+    }
+    .rated{
+        font-size: 10px;
+    }
+    .modal-ct {
+        width: 700px;
+        height:750px;
+    }
+    .hero-movie-des {
+        width: 382px;
+        font-size: 14px;
+        color: #ccc8c8;
+        font-weight: 300;
+        line-height: 15px;
+    }
+}

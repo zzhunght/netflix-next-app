@@ -13,28 +13,28 @@ function Navbar() {
             </div>
             <div className="nav-list">
                 <div className="nav-list-item">
-                    <Link href="#">
+                    <Link href="/home">
                         <a >
                             Home
                         </a>
                     </Link>
                 </div>
                 <div className="nav-list-item">
-                    <Link href="#">
+                    <Link href="/tv">
                         <a >
                             TV Series
                         </a>
                     </Link>    
                 </div>
                 <div className="nav-list-item">
-                    <Link href="#">
+                    <Link href="/movies/trending">
                         <a >
                             Movies
                         </a>
                     </Link>    
                 </div>
                 <div className="nav-list-item">
-                    <Link href="#">
+                    <Link href="/movies/popular">
                         <a >
                             Popular
                         </a>
