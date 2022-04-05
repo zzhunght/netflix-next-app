@@ -1,9 +1,12 @@
 import { Col, Row } from 'antd'
 import axios from 'axios'
-import React, {Fragment, useEffect} from 'react'
+import React, {Fragment, useEffect, useState,useContext} from 'react'
 import { useInView } from 'react-intersection-observer'
 import { QueryClient, useInfiniteQuery } from 'react-query'
 import Hero from '../../components/Hero'
+import Modal from '../../components/Modal'
+import Page from '../../components/Page'
+import { ModalContext } from '../../context/Modal'
 import {imageUrl, popularMovies} from '../../utils/contant'
 
 const fetchPopular = async({pageParam = 1})=>{
@@ -11,6 +14,14 @@ const fetchPopular = async({pageParam = 1})=>{
     return res.data
 }
 function TrendingPage({hero}) {
+    const {showModal,setShowModal} = useContext(ModalContext)
+    const [modalData,setModalData] = useState({})
+    
+    const  handelModal = (data) => {
+        setModalData(data)
+        setShowModal(true)
+    }
+
     const { ref, inView } = useInView()
     const {
         status,
@@ -38,24 +49,8 @@ function TrendingPage({hero}) {
     return (
     <>
     <Hero data={hero} backdrop="/moon-fall.jpg"/>
-    <div className="mv">
-        <h2 className="mv-title"> Trending Movies</h2>
-        <Row gutter={[6,6]} className="mv-row">
-            {data?.pages.map((group, i) => (
-                <Fragment key={i}>
-                    {group?.results.map((item,index)=>(
-                        <Col key={index} xxl={3} md={4} xs={8}>
-                        <div className="mv-item">
-                            <div className="mv-item-img">
-                                <img src={`${imageUrl}${item.backdrop_path}`} />
-                            </div>
-                        </div>
-                        </Col>
-                    ))}
-                </Fragment>
-            ))}
-        </Row>
-        <div>
+    <Page data={data} handelModal={handelModal}/>
+    <div>
             <button
               ref={ref}
               onClick={() => fetchNextPage()}
@@ -68,13 +63,13 @@ function TrendingPage({hero}) {
                 ? 'Load Newer'
                 : 'Nothing more to load'}
             </button>
-          </div>
+        </div>
           <div>
             {isFetching && !isFetchingNextPage
               ? 'Background Updating...'
               : null}
-          </div>
     </div>
+    {showModal && <Modal data={modalData}/>}
     </>
   )
 }

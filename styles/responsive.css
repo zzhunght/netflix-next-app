@@ -33,3 +33,50 @@
         line-height: 15px;
     }
 }
+
+@media (max-width: 768px) {
+    .hero-wr {
+        height: 200px;
+    }
+    .hero-movie-name {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+    .hero-movie-des {
+        width: 244px;
+        font-size: 10px;
+        color: #f0eeee;
+        font-weight: 300;
+        line-height: 15px;
+        height: 60px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+    }
+    .hero-btn {
+        margin-bottom: 2px;
+    }
+    .modal-close {
+        left: 89%;
+    }
+    .modal-ct {
+        height: 563px;
+    }
+    .modal-head {
+        position: relative;
+        width: 100%;
+        height: 38%;
+        background-size: cover;
+    }
+    .play-btn {
+        top: 69%;
+    }
+    .modal-close::before {
+        left: 28%;
+    }
+    .modal-close::after {
+        left: 28%;
+    }
+}

@@ -71,7 +71,7 @@ a {
 
 .nav-wr{
   width: 100%;
-  margin-top:var(--Nav-mg-top);
+  padding-top:var(--Nav-mg-top);
   height:var(--nav-height);
   z-index: 2;
   color: #fff;
@@ -166,7 +166,7 @@ a {
 .btn-hero-info{
   background: #59575763;
   border: none;
-  width: 65px;
+  width: auto;
   height: 23px;
   margin-right: 10px;
   border-radius: 4px;
@@ -500,6 +500,7 @@ button.btn.btn-play {
   max-width: 100%;
   width: 93%;
   margin: 10px auto 30px;
+  background-color: #000;
 
 }
 .mv-title{
