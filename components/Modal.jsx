@@ -1,15 +1,21 @@
+import { useRouter } from 'next/router'
 import React, {useState, useEffect,useContext} from 'react'
 import { ModalContext } from '../context/Modal'
 import { imageUrl } from '../utils/contant'
 
-function Modal({data}) {
+function Modal({data,type}) {
+    const router = useRouter()
     const [movie,setMovies] = useState(data)
     const {showModal,setShowModal} = useContext(ModalContext)
 
     useEffect(() => {
         setMovies(data)
-    },data)
+    },[data])
 
+    const handelOnClick = (e) => {
+        console.log('e',e)
+        router.push(`/watch/${e.media_type || type}/${e.id}`)
+    }
     return (
     <div className="modal-wr">
         <div
@@ -21,7 +27,12 @@ function Modal({data}) {
 
             <div className="modal-head" style={{backgroundImage:`url(${imageUrl}${data?.backdrop_path})`}}>
                 <div className="play-btn">
-                    <button className="btn btn-play">Play</button>
+                    <button
+                     className="btn btn-play"
+                     onClick={() =>handelOnClick(data)}
+                    >
+                        Play
+                    </button>
                 </div>
             </div>
             <div className="modal-body">

@@ -9,7 +9,7 @@ import Page from '../../components/Page'
 import { ModalContext } from '../../context/Modal'
 import {imageUrl, popularMovies} from '../../utils/contant'
 
-const fetchPopular = async({pageParam = 1})=>{
+const fetchTrending = async({pageParam = 1})=>{
     const res = await axios.get('https://api.themoviedb.org/3/trending/all/day?api_key=7292f619013a396c80612a34da77ddaa&language=vi&page=' + pageParam)
     return res.data
 }
@@ -34,7 +34,7 @@ function TrendingPage({hero}) {
         fetchPreviousPage,
         hasNextPage,
         hasPreviousPage,
-    } = useInfiniteQuery('popular-movies',fetchPopular,{
+    } = useInfiniteQuery('trending-movies',fetchTrending,{
        
         getNextPageParam: (lastpage,pages) =>{
             return pages.length + 1
@@ -49,7 +49,7 @@ function TrendingPage({hero}) {
     return (
     <>
     <Hero data={hero} backdrop="/moon-fall.jpg"/>
-    <Page data={data} handelModal={handelModal}/>
+    <Page data={data} handelModal={handelModal} label="Trending"/>
     <div>
             <button
               ref={ref}
@@ -69,7 +69,7 @@ function TrendingPage({hero}) {
               ? 'Background Updating...'
               : null}
     </div>
-    {showModal && <Modal data={modalData}/>}
+    {showModal && <Modal type="movie" data={modalData}/>}
     </>
   )
 }

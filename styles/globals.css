@@ -82,6 +82,7 @@ a {
   width: 93%;
   margin: 0 auto;
   display: flex;
+  height:40px;
 }
 .nav-img{
   margin-right: 20px;
@@ -96,7 +97,43 @@ a {
   margin-right: 10px;
   font-size: 12px;
 }
+.nav-search{
+  margin-left: auto;
+  border: 1px solid #ccc;
+  background-color: #000;
+  color:#fff;
+  padding:5px 12px;
+  border-radius: 20px;
+  width: 300px;
+  display:flex;
+  justify-content:space-between;
+}
+.form-search{
+  border:none;
+  outline: none;
+  background-color: #000;
+  color:#fff;
 
+}
+.search-btn{
+  border: none;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+.search-icon {
+  font-size: 20px;
+  font-weight: 800;
+}
+.nav-open-menu{
+  display: none;
+}
+.menu-overlay{
+  display: none;
+}
+.menu-mobile {
+  display: none;
+}
 
 
 
@@ -146,11 +183,16 @@ a {
 }
 .hero-movie-name {
   font-size: 23px;
+  transform: translateY(1px);
   font-weight: 600;
   margin-bottom: 14px;
+  opacity: 0;
+  animation:fade-up 0.4s linear forwards;
 }
 .hero-btn{
-
+  opacity: 0;
+  animation:fade-up 0.4s linear forwards;
+  animation-delay: 0.15s;
 }
 .btn-hero-play {
   background: red;
@@ -174,6 +216,7 @@ a {
   color: #fff;
   font-size: 10px;
   cursor: pointer;
+  
 
 }
 .hero-movie-des{
@@ -182,7 +225,9 @@ a {
   color: #ccc;
   font-weight: 300;
   line-height: 15px;
-
+  opacity: 0;
+  animation:fade-up 0.4s linear forwards;
+  animation-delay: 0.3s;
 }
 
 .list-wr{
@@ -510,25 +555,75 @@ button.btn.btn-play {
 .mv-row{
 
 }
+.mv-col{
+  position: relative;
+  overflow: hidden;
+}
 .mv-item{
   border-radius: 3px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s linear;  
-  opacity: 0.7;
 }
-.mv-item:hover{
-  transform:scale(1.1);
-  z-index: 2;
-  position: relative;
-  opacity: 0.9;
-}
-.mv-item-img{
+.mv-col:hover .mv-item{
+  filter:blur(4px);
 
 }
+.mv-col:hover .mv-item .mv-item-img img{
+  transform:scale(1.4);
+  transition: all 0.3s linear;  
+
+}
+.mv-info{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  cursor: pointer;
+
+}
+.mv-col:hover  .mv-info{
+  display:flex;
+}
+
+.mv-name{
+  color: #fff;
+  text-align: center;
+  font-size: 11px;
+  animation: fade-up 0.4s linear forwards;
+  opacity: 0;
+  margin-bottom: 5px;
+}
+.mv-play-icon {
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  animation: fade-up 0.4s linear forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+  align-items: center;
+  /* padding-left: 1px; */
+}
+.mv-play-icon img{
+  width: 10px;
+  height: 10px;
+  margin-left: 1.5px;
+}
 .mv-item-img img{
+  transform:scale(1);
   width: 100%;
   object-fit: cover;
+  transition: all 0.3s linear;  
 }
 button.Load.More {
   border: 1px solid #fff;
@@ -545,3 +640,97 @@ button.Load.More {
   cursor: pointer;
 }
 /* -----------------------------------END PAGE ------------------------------ */
+
+
+
+
+
+
+/* ----------------------------------- Search Page ------------------------------ */
+.search {
+  max-width: 100%;
+  width: 93%;
+  margin: 10px auto 30px;
+  background-color: #000;
+
+}
+.search-for{
+  color: #fff;
+}
+.search-list{
+
+}
+.search-col{
+  position: relative;
+  overflow: hidden;
+}
+.search-item{
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s linear;  
+}
+.search-col:hover .search-item{
+  filter:blur(4px);
+
+}
+.search-col:hover .search-item .search-item-img img{
+  transform:scale(1.4);
+  transition: all 0.3s linear;  
+
+}
+.search-info{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  cursor: pointer;
+
+}
+.search-col:hover  .search-info{
+  display:flex;
+}
+
+.search-name{
+  color: #fff;
+  text-align: center;
+  font-size: 11px;
+  animation: fade-up 0.4s linear forwards;
+  opacity: 0;
+  margin-bottom: 5px;
+}
+.search-play-icon {
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  animation: fade-up 0.4s linear forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+  align-items: center;
+  /* padding-left: 1px; */
+}
+.search-play-icon img{
+  width: 10px;
+  height: 10px;
+  margin-left: 1.5px;
+}
+.search-item-img img{
+  transform:scale(1);
+  width: 100%;
+  object-fit: cover;
+  transition: all 0.3s linear;  
+}
+
+
+
+/* ------------------------------------ End Search Page-------------------------- */

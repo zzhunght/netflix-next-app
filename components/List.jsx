@@ -3,10 +3,16 @@ import { imageUrl } from '../utils/contant'
 import { useContext, useState } from 'react'
 import { ModalContext } from '../context/Modal'
 
-function List({label,data,handelModal}) {
+function List({label,data,handelModal,setType}) {
   // console.log(data)
 
   const handelOnClick = (data)=>{
+    if(label === 'Trending Movies' || label === 'Popular Movies' || label === 'Top Rated Movies'){
+      setType('movie')
+    }
+    else{
+      setType('tv')
+    }
     handelModal(data)
   }
 

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 
 function Hero({data,backdrop}) {
-    console.log(data)
+    // console.log(data)
   return (
     <div
      className="hero-wr" 

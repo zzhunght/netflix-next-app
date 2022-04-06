@@ -49,7 +49,7 @@ function PopularPage({hero}) {
     return (
         <>
             <Hero data={hero} backdrop="/spider-man.jpg"/>
-            <Page data={data} handelModal={handelModal}/>
+            <Page data={data} handelModal={handelModal} label="Popular"/>
             <div>
                 <button
                 ref={ref}
@@ -70,7 +70,7 @@ function PopularPage({hero}) {
                 : null}
             </div>
         
-            {showModal && <Modal data={modalData}/>}
+            {showModal && <Modal type="movie" data={modalData}/>}
         </>
   )
 }

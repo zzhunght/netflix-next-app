@@ -9,7 +9,7 @@ import Modal from '../components/Modal'
 function HomePage ({hero,popular,top_rated,tvShowPopular,tvShowTopRated,trendingMovies}){
     const {showModal,setShowModal} = useContext(ModalContext)
     const [modalData,setModalData] = useState({})
-    
+    const [type,setType] = useState('')
     const  handelModal = (data) => {
         setModalData(data)
         setShowModal(true)
@@ -22,30 +22,37 @@ function HomePage ({hero,popular,top_rated,tvShowPopular,tvShowTopRated,trending
                 <List
                  label="Trending Movies" 
                  data={trendingMovies}
-                 setShowModal={setShowModal} handelModal={handelModal}
+                 setShowModal={setShowModal}
+                 handelModal={handelModal}
+                 setType={setType}
+                 
                 />
                 <List
                  label="Popular Movies" 
                  data={popular}
                  setShowModal={setShowModal} handelModal={handelModal}
+                 setType={setType}
                 />
                 <List
                  label="Top Rated Movies"
                  data={top_rated}
                  setShowModal={setShowModal} handelModal={handelModal}
+                 setType={setType}
                 />
                 <List
                  label="Tv Shows Popular"
                  data={tvShowPopular}
                  setShowModal={setShowModal} handelModal={handelModal}
+                 setType={setType}
                 />
                 <List
                  label="Tv Shows Top Rated" 
                  data={tvShowTopRated}
                  setShowModal={setShowModal} handelModal={handelModal}
+                 setType={setType}
                 />
             </div>
-            {showModal && <Modal data={modalData}/>}
+            {showModal && <Modal type={type} data={modalData}/>}
         </div>
     )
 }
