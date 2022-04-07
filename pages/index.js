@@ -1,8 +1,29 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import {useContext,useEffect } from 'react'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { ProfileContext } from '../context/profile'
+import { AnimationContext } from '../context/Animation'
 
 export default function Home() {
+  const router = useRouter()
+  const {handleAuth,profile,isAuthenticated} = useContext(ProfileContext)
+  const {handleAnimation} = useContext(AnimationContext)
+
+  const handelProfile = (profile) => {
+    handleAuth(profile)
+    router.push('/home')
+    handleAnimation()
+  }
+
+  useEffect(()=>{
+    // console.log(isAuthenticated)
+    if(isAuthenticated){
+      router.push('/home')
+      handleAnimation()
+    }
+  },[isAuthenticated])
   return (
     <div className={styles.container}>
       <Head>
@@ -12,7 +33,30 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h2>hello world</h2>
+        <div className="main-content">
+          <div className="main-title"> Who Watching ?</div>
+          <div className="profile-wr">
+              <div className="profile" onClick={() =>handelProfile(1)}>
+                <img src="/profile-1.jpg" alt="" className="profile-icon" />
+                <p> Person 1</p>
+              </div>  
+              <div className="profile" onClick={() =>handelProfile(2)}>
+                <img src="/profile-2.jpg" alt="" className="profile-icon" />
+                <p>   Person 2</p>
+
+              </div>
+              <div className="profile" onClick={() =>handelProfile(3)}>
+                <img src="/profile-3.jpg" alt="" className="profile-icon" />
+                <p> Person 3</p>
+                
+              </div>
+              <div className="profile" onClick={() =>handelProfile(4)}>
+                <img src="/profile-4.jpg" alt="" className="profile-icon" />
+                <p> Person 4</p>
+
+              </div>
+          </div>
+        </div>
       </main>
     </div>
   )

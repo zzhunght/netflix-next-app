@@ -1,19 +1,22 @@
-import { Col, Row } from 'antd'
 import axios from 'axios'
-import React, {Fragment, useEffect,useState,useContext} from 'react'
+import React, { useEffect,useState,useContext} from 'react'
 import { useInView } from 'react-intersection-observer'
-import { QueryClient, useInfiniteQuery } from 'react-query'
+import { useInfiniteQuery } from 'react-query'
 import Hero from '../../components/Hero'
 import Modal from '../../components/Modal'
 import Page from '../../components/Page'
 import { ModalContext } from '../../context/Modal'
-import {imageUrl, popularMovies} from '../../utils/contant'
+import { ProfileContext } from '../../context/profile'
+import { useRouter } from 'next/router'
 
 const fetchTvShow = async({pageParam = 1})=>{
     const res = await axios.get('https://api.themoviedb.org/3/tv/popular?api_key=7292f619013a396c80612a34da77ddaa&language=vi&page=' + pageParam)
     return res.data
 }
 function TvShow({hero}) {
+    
+    const router = useRouter()
+    const {isAuthenticated} = useContext(ProfileContext)
     const {showModal,setShowModal} = useContext(ModalContext)
     const [modalData,setModalData] = useState({})
     
@@ -43,7 +46,9 @@ function TvShow({hero}) {
             fetchNextPage()
         }
     }, [inView])
-    
+    useEffect(() => {
+        if(!isAuthenticated) router.push('/')
+    },[isAuthenticated])
     return (
     <>
         <Hero data={hero} backdrop="/moon-knight.jpg"/>

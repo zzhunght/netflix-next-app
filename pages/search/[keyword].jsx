@@ -6,9 +6,12 @@ import { ModalContext } from '../../context/Modal'
 import { useInView } from 'react-intersection-observer'
 import { useInfiniteQuery } from 'react-query'
 import axios from 'axios'
+import { ProfileContext } from '../../context/profile'
+
 
 function SearchPage() {
   const router = useRouter()
+  const {isAuthenticated} = useContext(ProfileContext)
   const {showModal,setShowModal} = useContext(ModalContext)
   const [modalData,setModalData] = useState({})
 
@@ -18,7 +21,6 @@ function SearchPage() {
       setShowModal(true)
   }
   const fetchSearch = async({pageParam = 1})=>{
-    // console.log('query', query)
     const res = await axios.get(`https://api.themoviedb.org/3/search/multi?api_key=7292f619013a396c80612a34da77ddaa&language=vi&query=${router.query.keyword}&page=${pageParam}&include_adult=false`
       )
     return res.data
@@ -45,7 +47,9 @@ function SearchPage() {
         fetchNextPage()
       }
     }, [inView])
-   
+    useEffect(() => {
+      if(!isAuthenticated) router.push('/')
+  },[isAuthenticated])
     
   return (
     <>

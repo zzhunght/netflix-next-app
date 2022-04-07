@@ -139,6 +139,7 @@
         background: #191a1f;
         color: #fff;
         cursor: pointer;
+        margin-right: 10px;
     }
     .nav-list,.nav-search {
         display: none;
@@ -190,5 +191,18 @@
         
 
     }
-    
+    .profile {
+        width: 50px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    .profile:last-child {
+        margin-right: 0px;
+    }
+    .nav-user {
+        margin-left: auto;
+        margin-right: 10px;
+        position: relative;
+        transform: translateY(-4px);
+    }
 }

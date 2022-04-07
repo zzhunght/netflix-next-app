@@ -1,12 +1,17 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
+import { useRouter} from 'next/router'
 import Hero from "../components/Hero"
 import axios from "axios"
 import { popularMovies, top_ratedMovies, trending, tvShowPopular, tvShowTopRated } from "../utils/contant"
 import List from "../components/List"
 import { ModalContext } from '../context/Modal'
 import Modal from '../components/Modal'
+import { ProfileContext } from '../context/profile'
 
 function HomePage ({hero,popular,top_rated,tvShowPopular,tvShowTopRated,trendingMovies}){
+    const {isAuthenticated} = useContext(ProfileContext)
+    const router = useRouter()
+
     const {showModal,setShowModal} = useContext(ModalContext)
     const [modalData,setModalData] = useState({})
     const [type,setType] = useState('')
@@ -14,6 +19,10 @@ function HomePage ({hero,popular,top_rated,tvShowPopular,tvShowTopRated,trending
         setModalData(data)
         setShowModal(true)
     }
+
+    useEffect(() => {
+        if(!isAuthenticated) router.push('/')
+    })
 
     return (
         <div className="Home-wr">
