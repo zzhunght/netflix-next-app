@@ -51,7 +51,7 @@ function TvShow({hero}) {
     },[isAuthenticated])
     return (
     <>
-        <Hero data={hero} backdrop="/moon-knight.jpg" type="movie"/>
+        <Hero data={hero} backdrop="/moon-knight.jpg" type="tv"/>
         <Page data={data}  handelModal={handelModal} label="Tv"/>
         <div>
             <button
