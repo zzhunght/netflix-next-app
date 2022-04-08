@@ -12,7 +12,7 @@ function Page({data,handelModal,label}) {
                     {group?.results.map((item,index)=>(
                         <Col
                          className="mv-col"
-                         key={index} xxl={3} md={4} xs={8} 
+                         key={index} xxl={3} md={4} xs={12} 
                          onClick={() =>handelModal(item)}
                         >
                         <div className="mv-item">
