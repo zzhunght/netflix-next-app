@@ -48,7 +48,9 @@ function SearchPage() {
       }
     }, [inView])
     useEffect(() => {
-      if(!isAuthenticated) router.push('/')
+      if(!localStorage.getItem('profile')){
+        router.push('/')
+      }
   },[isAuthenticated])
     
   return (

@@ -32,6 +32,10 @@
         font-weight: 300;
         line-height: 15px;
     }
+    .tv-sr-overview {
+        font-size:20px;
+        width: 50vw;
+    }
 }
 
 @media (max-width: 768px) {
@@ -39,7 +43,9 @@
         justify-content: space-between;
     }
     .hero-wr {
-        height: 200px;
+        height: 545px;
+        background-size: cover;
+        background-position: center;
     }
     .hero-movie-name {
         font-size: 14px;
@@ -205,4 +211,36 @@
         position: relative;
         transform: translateY(-4px);
     }
+    .list-col.season-col {
+        height: 110px;
+    }
+    .episode-img {
+        height: 80%;
+    }
+    .episode-name {
+  
+        font-size: 14px;
+    }
+    .video {
+        height: 220px;
+    }
+    .tv-sr-thumbnail-desktop{
+        display:none;
+    }
+    .mv-d-mobile{
+        display: block;
+    }
+    
+}
+@media(min-width: 769px) and (max-width: 1200px) {
+    .list-col.season-col {
+        height: 150px;
+    }
+    .nav-list-item{
+        font-size: 17px;
+    }
+    .nav-search {
+        width: 240px;
+    }
+    
 }

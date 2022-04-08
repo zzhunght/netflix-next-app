@@ -51,12 +51,14 @@ function PopularPage({hero}) {
         }
     }, [inView])
     useEffect(() => {
-        if(!isAuthenticated) router.push('/')
+        if(!localStorage.getItem('profile')){
+            router.push('/')
+        }
     },[isAuthenticated])
 
     return (
         <>
-            <Hero data={hero} backdrop="/spider-man.jpg"/>
+            <Hero data={hero} backdrop="/spider-man.jpg" type="movie"/>
             <Page data={data} handelModal={handelModal} label="Popular"/>
             <div>
                 <button

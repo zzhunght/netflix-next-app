@@ -48,11 +48,13 @@ function TrendingPage({hero}) {
         }
     }, [inView])
     useEffect(() => {
-        if(!isAuthenticated) router.push('/')
+        if(!localStorage.getItem('profile')){
+            router.push('/')
+        }
     },[isAuthenticated])
     return (
     <>
-    <Hero data={hero} backdrop="/moon-fall.jpg"/>
+    <Hero data={hero} backdrop="/moon-fall.jpg" type="movie"/>
     <Page data={data} handelModal={handelModal} label="Trending"/>
     <div>
             <button

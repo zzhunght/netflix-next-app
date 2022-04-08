@@ -19,7 +19,7 @@ function Navbar() {
 
     /// function
     
-    const handleProgress = ()=>{
+    const handleProgress = () =>{
         handleAnimation()
     }
     const handelKeyDown = (e) => {
@@ -46,7 +46,11 @@ function Navbar() {
         <div className="nav-wr">
             <div className="nav-content">
                 <div className="nav-img">
-                    <img src="/logo.png" alt="image" className="nav-logo"/>
+                    <Link href="/home">
+                        <a onClick={handleAnimation} >
+                            <img src="/logo.png" alt="image" className="nav-logo"/>
+                        </a>
+                    </Link>
                 </div>
                 <div className="nav-list">
                     <div className="nav-list-item">
@@ -139,7 +143,7 @@ function Navbar() {
                         className="menu-form-search"
                         value={value}
                         onChange ={e => onChange(e)} 
-                        placeholder="Something you want" 
+                        placeholder="Bạn Muốn Xem Gì ?" 
                         onKeyDown={e =>handelKeyDown(e)}
                         />
                         <button className="search-btn">
@@ -152,8 +156,7 @@ function Navbar() {
                     </div>
                     <div className="menu-list">
                         <Link
-                        
-                        href="/home"
+                            href="/home"
                         >
                             <a
                             onClick={() =>{
@@ -166,13 +169,12 @@ function Navbar() {
                             </a>
                         </Link>
                         <Link
-                        
-                        href="/tv"
+                         href="/tv"
                         >
                             <a
                             onClick={() =>{
                                 setOpenMenu(false)
-                                handelProgress()
+                                handleProgress()
                             }}
                             className={`menu-item ${router.pathname.includes('tv') ? 'active' : ''}`} 
                             >  
@@ -180,13 +182,12 @@ function Navbar() {
                             </a>
                         </Link>
                         <Link
-                        
-                        href="/movies/trending"
+                         href="/movies/trending"
                         >
                             <a
                             onClick={() =>{
                                 setOpenMenu(false)
-                                handelProgress()
+                                handleProgress()
                             }} 
                             className={`menu-item ${router.pathname.includes('trending') ? 'active' : ''}`} 
                             >
@@ -194,13 +195,12 @@ function Navbar() {
                             </a>
                         </Link>
                         <Link
-                        
-                        href="/movies/popular"
+                          href="/movies/popular"
                         >
                             <a
                             onClick={() =>{
                                 setOpenMenu(false)
-                                handelProgress()
+                                handleProgress()
                             }} 
                             className={`menu-item ${router.pathname.includes('popular') ? 'active' : ''}`} 
                             >

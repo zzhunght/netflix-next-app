@@ -20,13 +20,16 @@ function HomePage ({hero,popular,top_rated,tvShowPopular,tvShowTopRated,trending
         setShowModal(true)
     }
 
+   
     useEffect(() => {
-        if(!isAuthenticated) router.push('/')
-    })
+        if(!localStorage.getItem('profile')){
+            router.push('/')
+        }
+    },[isAuthenticated])
 
     return (
         <div className="Home-wr">
-            <Hero data={hero} backdrop='/home-hero.jpg'/>
+            <Hero data={hero} backdrop='/home-hero.jpg' type="movie"/>
             <div className="lists-of-list-movies">
                 <List
                  label="Trending Movies" 

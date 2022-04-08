@@ -1,20 +1,23 @@
 import { useRouter } from 'next/router'
 import React, {useState, useEffect,useContext} from 'react'
+import { AnimationContext } from '../context/Animation'
 import { ModalContext } from '../context/Modal'
 import { imageUrl } from '../utils/contant'
 
 function Modal({data,type}) {
     const router = useRouter()
     const [movie,setMovies] = useState(data)
-    const {showModal,setShowModal} = useContext(ModalContext)
+    const {setShowModal} = useContext(ModalContext)
+    const {handleAnimation} = useContext(AnimationContext)
 
     useEffect(() => {
         setMovies(data)
     },[data])
 
     const handelOnClick = (e) => {
-        console.log('e',e)
         router.push(`/watch/${e.media_type || type}/${e.id}`)
+        handleAnimation()
+        setShowModal(false)
     }
     return (
     <div className="modal-wr">
@@ -31,7 +34,7 @@ function Modal({data,type}) {
                      className="btn btn-play"
                      onClick={() =>handelOnClick(data)}
                     >
-                        Play
+                        Xem
                     </button>
                 </div>
             </div>
@@ -43,16 +46,16 @@ function Modal({data,type}) {
             </div>
             <div className="modal-ft">
                 <h2 className="modal-ft-title">
-                    Info on {data?.name || data?.title || data?.original_title || data?.original_name}
+                    Thông tin về {data?.name || data?.title || data?.original_title || data?.original_name}
                 </h2>
                 <p className="modal-ft-info">
-                    Release date : <span className="span-bold">{data?.release_date}</span>
+                    Ngày phát hành : <span className="span-bold">{data?.release_date}</span>
                 </p>
                 <p className="modal-ft-info">
-                    Average vote : <span className="span-bold">{data?.vote_average}</span>
+                    Điểm : <span className="span-bold">{data?.vote_average}</span>
                 </p>
                 <p className="modal-ft-info">
-                    Original Langue : <span className="span-bold">{data?.original_language}</span>
+                    Ngôn ngữ gốc : <span className="span-bold">{data?.original_language}</span>
                 </p>
                 <p className="modal-ft-info">
                     Vote : <span className="span-bold">{data?.vote_count}</span>

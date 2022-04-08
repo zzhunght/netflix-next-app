@@ -6,7 +6,8 @@ body {
   margin: 0;
   font-family: Lato,Helvetica Neue,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, sans-serif;
-  background-color: #000;
+  background-color: #101112;
+  
 }
 :root{
   --Nav-mg-top: 10px;
@@ -14,6 +15,9 @@ body {
   --hero-margin-top: calc(var(--nav-height) + var(--Nav-mg-top));
   
 
+}
+img{
+  width: 100%;
 }
 a {
   color: inherit;
@@ -25,7 +29,7 @@ a {
 }
 #__next{
   overflow-x: hidden;
-  background-color: #000;
+  background-color: #101112;
 }
 ::-webkit-scrollbar{
   -webkit-appearance: none;
@@ -148,7 +152,7 @@ a {
 }
 .nav-list-item{
   margin-right: 10px;
-  font-size: 12px;
+  font-size: 17px;
 }
 .nav-search {
   margin-left: auto;
@@ -235,11 +239,12 @@ a {
 
 /*----------------------------------------------- Home PAGE -----------------------------------------------*/
 .Home-wr{
-  margin-top:calc(0px - var(--hero-margin-top));
   margin-bottom:50px;
-  background:#000;
+  background:#101112;
 }
 .hero-wr{
+  margin-top:calc(0px - var(--hero-margin-top));
+
   width: 100%;
   background-size: cover;
   height:450px;
@@ -640,7 +645,7 @@ button.btn.btn-play {
   max-width: 100%;
   width: 93%;
   margin: 10px auto 30px;
-  background-color: #000;
+  background-color: #101112;
 
 }
 .mv-title{
@@ -827,5 +832,175 @@ button.Load.More {
 }
 
 
-
 /* ------------------------------------ End Search Page-------------------------- */
+
+
+
+
+
+
+/* ----------------------------------------- Tv Detais Page ------------------------------------ */
+.main-wr {
+  width: 90%;
+  margin: 50px auto;
+}
+.tv-sr-thumbnail-desktop {
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  justify-content: space-between;
+}
+.tv-sr-info {
+  padding-right: 20px;
+  align-self: center;
+}
+.tv-sr-name {
+  font-size: 34px;
+  font-weight: 700;
+  color: rgba(255, 138, 5, 0.842);
+}
+.tv-sr-info  span {
+  color: #ccc;
+}
+.tv-sr-poster {
+  position: relative;
+  width: 400px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.tv-sr-poster::after {
+  position: absolute;
+  bottom: 0;
+  content: '';
+  height: 30%;
+  left: 0;
+  width: 100%;
+  background-image: linear-gradient(360deg, black, transparent);
+}
+.tv-sr-poster img{
+  width: 100%;
+  height: 100%;
+}
+.tv-sr-des {
+  width: 376px;
+}
+.tv-des-detail {
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+.season-list {
+  padding-top: 10px;
+  width: 100%;
+  
+}
+.season-label {
+  color: #ff1c1c;
+  font-size: 27px;
+}
+.list-col.season-col{
+  height: 185px;
+}
+
+.episode-img {
+  width: 100%;
+  height: 82%;
+  border-radius:3px;
+  object-fit: cover;
+}
+.episode-img-wr {
+  height: 100%;
+  border-radius: 3px;
+  margin-bottom: 7px;
+  /* transform: scale(1); */
+  transform-origin: 50% 50%;
+  transition: 0.3s all cubic-bezier(0.4, 0, 0.68, 0.77);
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+
+}
+.episode-info {
+  color: #fff;
+}
+.episode-name {
+  margin: 0;
+  font-weight: bold;
+  font-size: 18px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.mv-d-mobile{
+  display: none;
+}
+.mv-mb-bg {
+  border-radius: 5px;
+  overflow: hidden;
+}
+.mv-mb-info {
+  margin-top: 12px;
+  color: #fff;
+  background: #1b1b1b;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.mv-mb-name {
+  font-size: 25px;
+  height: 40px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  margin-bottom: 15px;
+  color: #fa3c3c;
+}
+.mv-mb-des {
+  width: 100%;
+}
+.mv-mb-des-detail {
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+.mv-mb-des-detail span {
+  color: #ccc;
+}
+button.mv-mb-play-btn {
+  display: block;
+  width: 100%;
+  margin: 10px auto;
+  background: red;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  height: 40px;
+  font-size: 22px;
+  cursor: pointer;
+}
+/* -----------------------------------------End Tv Detais Page-------------------------- */
+
+
+
+
+/* ----------------------------------------Video----------------------------------- */
+.video-wr{
+  width: 90%;
+  margin:50px auto;
+}
+.video {
+  width: 730px;
+  max-width: 100%;
+  height: 400px;
+  margin: 0 auto;
+  margin-bottom:20px;
+}
+.video-iframe{
+  width: 100%;
+  height: 100%;
+}
+.tv-name {
+  font-size: 25px;
+  color: #fff;
+}
+/* ----------------------------------------End Video ---------------------------------------- */
