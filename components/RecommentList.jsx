@@ -16,7 +16,7 @@ function RecommentList({data}) {
         <Row className="list-row season-row" gutter={6}>
             {data?.results?.map((item,index) =>(
                 <>
-                    <Col xxl={4} lg={6} md={6} xs={8} key={index} className="list-col season-col"
+                    <Col xxl={4} lg={6} md={6} xs={12} key={index} className="list-col season-col"
                     onClick={()=>handelOnClick(item)}
                     >
                         <div className="episode-img-wr">
