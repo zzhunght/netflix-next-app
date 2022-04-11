@@ -96,7 +96,7 @@ function Watch({recomment,movie}) {
 export default Watch
 export async function getServerSideProps(ctx){
     const id = ctx.params.watchId
-    const recomment = await axios.get(`https://api.themoviedb.org/3/movie/634649/recommendations?api_key=${process.env.API_KEY}&language=vi`)
+    const recomment = await axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.API_KEY}&language=vi`)
     const movie = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=vi`)
     
     return {
