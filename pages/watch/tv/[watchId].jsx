@@ -33,8 +33,8 @@ function Watch({recomment,TvDetails,seasons}) {
                 <img src={`${imageUrl}${TvDetails?.poster_path}`} alt="" />
             </div>
             <div className="tv-sr-des">
-                <div className="tv-des-detail"><span>Thể Loại : </span> {TvDetails?.genres.map(g=> `${g.name}, `)}</div>
-                <div className="tv-des-detail"><span>Nước sản xuất : </span> {TvDetails?.production_countries[0].name}</div>
+                <div className="tv-des-detail"><span>Thể Loại : </span> {TvDetails?.genres?.map(g=> `${g?.name}, `)}</div>
+                <div className="tv-des-detail"><span>Nước sản xuất : </span> {TvDetails?.production_countries[0]?.name}</div>
                 <div className="tv-des-detail"><span>Năm phát hành : </span> {TvDetails?.first_air_date}</div>
                 <div className="tv-des-detail"><span>Danh mục : </span> {TvDetails?.status}</div>
             </div>
@@ -79,6 +79,7 @@ export async function getServerSideProps(ctx){
     const id = ctx.params.watchId
     const seasons = [];
     const recomment = await axios.get(`https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${process.env.API_KEY}&language=vi`)
+    const samilar = await axios.get(`https://api.themoviedb.org/3/tv/${id}/similar?api_key=${process.env.API_KEY}&language=vi`)
     const tvDetails = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.API_KEY}&language=vi`)
     const fetchTvSeason = async (s)=>{
       for(let i = 1;i<=s;i++){
@@ -91,7 +92,7 @@ export async function getServerSideProps(ctx){
     }
     return {
         props: {
-          recomment: recomment.data,
+          recomment: recomment.data.results.length > 0 ? recomment.data : samilar.data,  
           TvDetails: tvDetails.data,
           seasons: seasons
         }

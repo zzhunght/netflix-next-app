@@ -47,8 +47,8 @@ function Watch({recomment,movie}) {
               <img src={`${imageUrl}${movie?.poster_path}`} alt="" />
           </div>
           <div className="tv-sr-des">
-              <div className="tv-des-detail"><span>Thể Loại : </span> {movie?.genres.map(g=> `${g.name}, `)}</div>
-              <div className="tv-des-detail"><span>Nước sản xuất : </span>{movie?.production_countries.map(c=> `${c.name}, `)}</div>
+              <div className="tv-des-detail"><span>Thể Loại : </span> {movie?.genres?.map(g=> `${g?.name}, `)}</div>
+              <div className="tv-des-detail"><span>Nước sản xuất : </span>{movie?.production_countries?.map(c=> `${c?.name}, `)}</div>
               <div className="tv-des-detail"><span>Năm phát hành : </span> {movie?.first_air_date}</div>
               <div className="tv-des-detail"><span>Danh mục : </span> {movie?.status}</div>
           </div>
@@ -97,11 +97,12 @@ export default Watch
 export async function getServerSideProps(ctx){
     const id = ctx.params.watchId
     const recomment = await axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.API_KEY}&language=vi`)
+    const samilar = await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.API_KEY}&language=vi`)
     const movie = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=vi`)
     
     return {
         props: {
-          recomment: recomment.data,
+          recomment: recomment.data.results.length > 0 ? recomment.data : samilar.data,  
           movie: movie.data,
         }
     }

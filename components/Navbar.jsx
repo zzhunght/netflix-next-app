@@ -91,7 +91,7 @@ function Navbar() {
                             className="form-search"
                             value={value}
                             onChange ={e => onChange(e)} 
-                            placeholder="Something you want" 
+                            placeholder="Bạn muốn xem gì ?" 
                             onKeyDown={e =>handelKeyDown(e)}
                             />
                             <button className="search-btn">

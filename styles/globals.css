@@ -20,16 +20,23 @@ img{
   width: 100%;
 }
 a {
-  color: inherit;
+  color: #fff;
   text-decoration: none;
+  
+}
+a:hover{
+  color: red;
 }
 
 * {
   box-sizing: border-box;
 }
-#__next{
-  overflow-x: hidden;
+#__next {
+  /* overflow: hidden; */
   background-color: #101112;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 100px;
 }
 ::-webkit-scrollbar{
   -webkit-appearance: none;
@@ -115,6 +122,7 @@ a {
   left: 0;
   right: 0;
   z-index: 99;
+  overflow: hidden;
 }
 .my-bar {
   position: relative;
@@ -646,6 +654,7 @@ button.btn.btn-play {
   width: 93%;
   margin: 10px auto 30px;
   background-color: #101112;
+  overflow: hidden;
 
 }
 .mv-title{

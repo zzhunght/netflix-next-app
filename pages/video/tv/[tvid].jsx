@@ -42,6 +42,8 @@ export async function getServerSideProps(ctx){
     const id = ctx.params.tvid
     const seasons = [];
     const recomment = await axios.get(`https://api.themoviedb.org/3/tv/${id}/recommendations?api_key=${process.env.API_KEY}&language=vi`)
+    const samilar = await axios.get(`https://api.themoviedb.org/3/tv/${id}/similar?api_key=${process.env.API_KEY}&language=vi`)
+
     const details = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.API_KEY}&language=vi`)
     const fetchTvSeason = async (s)=>{
       for(let i = 1;i<=s;i++){
@@ -54,7 +56,7 @@ export async function getServerSideProps(ctx){
     }
     return {
         props: {
-          recomment: recomment.data,
+          recomment: recomment.data.results.length > 0 ? recomment.data : samilar.data,  
           details: details.data,
           seasons: seasons
         }

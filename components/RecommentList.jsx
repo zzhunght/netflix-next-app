@@ -4,6 +4,7 @@ import { imageUrl } from '../utils/contant'
 import {useRouter} from 'next/router'
 import { AnimationContext } from '../context/Animation'
 function RecommentList({data}) {
+    console.log('data',data)
   const {handleAnimation} = useContext(AnimationContext)
   const router = useRouter()
   const handelOnClick = (item) =>{
@@ -16,17 +17,19 @@ function RecommentList({data}) {
         <Row className="list-row season-row" gutter={6}>
             {data?.results?.map((item,index) =>(
                 <>
-                    <Col xxl={4} lg={6} md={6} xs={12} key={index} className="list-col season-col"
-                    onClick={()=>handelOnClick(item)}
-                    >
-                        <div className="episode-img-wr">
-                            <img className="episode-img" src={`${imageUrl}${item.backdrop_path}`} alt="" />
-                            
-                            <div className="episode-info">
-                                <p className="episode-name">{item.title || item.name}</p>
+                    {item.backdrop_path && (
+                        <Col xxl={4} lg={6} md={6} xs={12} key={index} className="list-col season-col"
+                         onClick={()=>handelOnClick(item)}
+                        >
+                            <div className="episode-img-wr">
+                                <img className="episode-img" src={`${imageUrl}${item.backdrop_path}`} alt="" />
+                                
+                                <div className="episode-info">
+                                    <p className="episode-name">{item.title || item.name}</p>
+                                </div>
                             </div>
-                        </div>
-                    </Col>
+                        </Col>
+                    )}
                 </>
             ))}
         </Row>

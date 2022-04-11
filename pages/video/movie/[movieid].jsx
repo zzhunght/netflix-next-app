@@ -32,11 +32,12 @@ export default Video
 export async function getServerSideProps(ctx){
     const id = ctx.params.movieid
     const recomment = await axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${process.env.API_KEY}&language=vi`)
+    const samilar = await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.API_KEY}&language=vi`)
     const details = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=vi`)
    
     return {
         props: {
-          recomment: recomment.data,
+            recomment: recomment.data.results.length > 0 ? recomment.data : samilar.data,  
           details: details.data,
         }
     }
