@@ -20,12 +20,12 @@ img{
   width: 100%;
 }
 a {
-  color: #fff;
+  color: #fff !important;
   text-decoration: none;
   
 }
 a:hover{
-  color: red;
+  color: red !important;
 }
 
 * {
