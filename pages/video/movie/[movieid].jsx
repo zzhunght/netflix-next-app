@@ -19,7 +19,7 @@ function Video({details,recomment}) {
         <div className="video-wr">
             <div className="tv-name">{details?.name || details?.title}</div>
             <div className="video">
-                <iframe className="video-iframe" src={`https://www.2embed.ru/embed/tmdb/movie?id=${router.query.movieid}`} width="100%" height="100%" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <iframe className="video-iframe" src={`https://2embed.org/embed/movie?tmdb=${router.query.movieid}`} width="100%" height="100%" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
             <div className="tv-ss">
               <RecommentList data={recomment} />

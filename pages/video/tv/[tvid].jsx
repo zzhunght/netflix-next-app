@@ -20,7 +20,7 @@ function Video({details,seasons,recomment}) {
             <div className="video">
               <iframe
                className="video-iframe" 
-               src={`https://www.2embed.ru/embed/tmdb/tv?id=${router.query.tvid}&s=${router.query.s ||1}&e=${router.query.e || 1}`} width="100%" 
+               src={`https://2embed.org/embed/series?tmdb=${router.query.tvid}&sea=${router.query.s ||1}&epi=${router.query.e || 1}`} width="100%" 
                height="100%" 
                frameBorder="0" 
                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
